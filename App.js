@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, TouchableOpacity, PermissionsAndroid, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, PermissionsAndroid, TextInput, Alert} from 'react-native';
 var RNFS = require('react-native-fs');
 import XLSX, { writeFile } from 'xlsx';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -36,6 +36,7 @@ const App = () => {
     // Write generated excel to Storage
     RNFS.writeFile(RNFS.DownloadDirectoryPath + '/my_exported_file.xlsx', wbout, 'ascii').then((r)=>{
      console.log('Success');
+     alert("exported successfully")
     }).catch((e)=>{
       console.log('Error', e);
     });
@@ -91,12 +92,12 @@ const App = () => {
   return (
     <View
       style={{
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
       }}>
-        <Text>ausfuahfd</Text>
+        <Text style = {{fontSize:40, fontWeight:600, color: 'teal'}}>Excel Exporter</Text>
         <Table tableData={tableData} setTableData={setTableData} />
 
       <TouchableOpacity
@@ -105,10 +106,10 @@ const App = () => {
           width: '50%',
           paddingVertical: 10,
           paddingHorizontal: 15,
-          backgroundColor: 'blue',
-          marginVertical: 20,
+          marginVertical: 20,borderRadius: 50, 
+          borderWidth: 2, borderColor:'teal'
         }}>
-        <Text style={{textAlign: 'center', color: 'white'}}>
+        <Text style={{textAlign: 'center', color: 'black', fontSize:15}}>
           Export to Excel
         </Text>
       </TouchableOpacity>
@@ -128,7 +129,6 @@ const App = () => {
     return (
       <View>
         <View>
-          <Text>afsbsabf</Text>
           <TableRow row={0} tableData={tableData} setTableData={setTableData} />
           <TableRow row={1} tableData={tableData} setTableData={setTableData} />
           <TableRow row={2} tableData={tableData} setTableData={setTableData} />
